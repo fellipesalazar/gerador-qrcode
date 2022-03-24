@@ -1,0 +1,50 @@
+<!--
+Desenvolvido por: Fellipe Salazar
+E-mail: fellipe.salazar@vamosparcelar.com.br
+WhatsApp: +55 61 99872-1647
+-->
+
+<!DOCTYPE html>
+<html lang="pt_BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <title>Gerador QR Code</title>
+</head>
+
+<body>
+    <section class="container">
+        <h1>Gerador de QR Code</h1>
+        <p>Adicione abaixo o link para criação do QR Code. De preferência, adicione links encurtados, para evitar problemas com UTMs.</p>
+        <input type="text" id="linkQRCode" placeholder="Exemplo: https://vamosparcelar.click/seulink">
+        <div class="botao" id="btnGera">
+            <span class="text">Gerar QR Code</span>
+            <span class="load"></span>
+        </div>
+    </section>
+
+    <section class="popup">
+        <div class="backdrop">
+            <div class="popup-area">
+                <div class="popup-close"><i class="uil uil-times"></i></div>
+                <h2>QR Code gerado</h2>
+                <p>Clique no botão abaixo para fazer o download do QR Code</p>
+                <img class="qrcode" id="qrCode">
+                <div class="botao center" id="btnDownload">
+                    <span class="text">Baixar QR Code</span>
+                    <span class="load"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/5561998721647" class="copyright">Desenvolvido por Fellipe Salazar <i class="uil uil-arrow-up-right"></i></a>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>

@@ -4,14 +4,17 @@
 function geraQRCode() {
     const link = encodeURIComponent($('#linkQRCode').val()),
         GoogleCharts = 'https://chart.googleapis.com/chart?chs=500x500&cht=qr&chl=',
-        imagemQRCode = GoogleCharts + link;
+        loadBtn = $('#btnGera .load'),
+        textBtn = $('#btnGera .text'),
+        imgQRCode = $('#qrCode'),
+        urlQRCode = GoogleCharts + link;
 
-    $('#qrCode').attr('src', imagemQRCode);
-    $('#btnGera .load').show();
-    $('#btnGera .text').hide();
-    $('#qrCode').on('load', () => {
-        $('#btnGera .load').hide();
-        $('#btnGera .text').show();
+    imgQRCode.attr('src', urlQRCode);
+    loadBtn.show();
+    textBtn.hide();
+    imgQRCode.on('load', () => {
+        loadBtn.hide();
+        textBtn.show();
         abrePopup();
     });
 }
@@ -54,21 +57,24 @@ const converteEmBase64 = async (url) => {
 
 // função que realiza o download do QR Code
 function baixaQRCode() {
-    var link = document.createElement('a');
+    const link = document.createElement('a'),
+          loadBtn = $('#btnGera .load'),
+          textBtn = $('#btnGera .text'),
+          imgQRCode = $('#qrCode');
 
-    converteEmBase64($("#qrCode").attr("src")).then((data) => {
+    converteEmBase64(imgQRCode.attr("src")).then((data) => {
         link.href = data;
     });
     
     link.download = 'QR Code';
     document.body.appendChild(link);
 
-    $('#btnDownload .load').show();
-    $('#btnDownload .text').hide();
+    loadBtn.show();
+    textBtn.hide();
 
     setTimeout(() => {
-        $('#btnDownload .load').hide();
-        $('#btnDownload .text').show();
+        loadBtn.hide();
+        textBtn.show();
         link.click();
         document.body.removeChild(link);
     }, 1500);
